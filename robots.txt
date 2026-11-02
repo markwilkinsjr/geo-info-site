@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://markwilkinsjr.github.io/geo-info-site/sitemap.xml

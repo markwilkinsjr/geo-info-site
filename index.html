@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GeoInfo — Maps of the places that matter</title>
+<meta name="description" content="GeoInfo — geography, places, and the maps that go with them. Custom street maps, star maps, and route posters from the creators and tourism boards we work with.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F3EC; --ink:#2C3A47; --accent:#C86B5A; --sub:#7A8590;
+  --sage:#EDF1EA; --line:#D9D2C7; --max:1080px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+a{color:inherit}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.12;letter-spacing:-.01em}
+header{border-bottom:1px solid var(--line);padding:26px 0;position:sticky;top:0;background:rgba(247,243,236,.94);backdrop-filter:blur(8px);z-index:50}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:11px;font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:700;letter-spacing:.01em}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--accent)}
+nav{display:flex;gap:26px;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--sub);flex-wrap:wrap}
+nav a{text-decoration:none;transition:color .2s}
+nav a:hover{color:var(--accent)}
+.eyebrow{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;font-weight:500}
+.hero{padding:88px 0 74px;text-align:center}
+.hero h1{font-size:clamp(42px,7.5vw,82px);max-width:880px;margin:0 auto 24px}
+.hero p{font-size:18.5px;color:var(--sub);max-width:620px;margin:0 auto 34px}
+.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:15px 34px;border-radius:2px;text-decoration:none;font-size:14px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;transition:transform .18s,background .18s}
+.btn:hover{transform:translateY(-2px);background:var(--accent)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{background:var(--ink);color:var(--bg)}
+.rule{width:56px;height:1px;background:var(--sub);opacity:.45;margin:0 auto 30px}
+section{padding:68px 0}
+.alt{background:var(--sage)}
+.dests{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:26px}
+.dest{background:#fff;border:1px solid var(--line);border-radius:3px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.dest:hover{transform:translateY(-4px);box-shadow:0 14px 38px rgba(44,58,71,.09)}
+.dest .img{height:196px;background:linear-gradient(140deg,#E4DDD1,#D8E0DA);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:12px;letter-spacing:.2em;text-transform:uppercase;position:relative;overflow:hidden}
+.dest .img img{width:100%;height:100%;object-fit:cover}
+.dest .body{padding:24px 24px 26px;flex:1;display:flex;flex-direction:column}
+.dest h3{font-size:25px;margin-bottom:8px}
+.dest .meta{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.dest p{font-size:14.5px;color:var(--sub);margin-bottom:18px;flex:1}
+.dest a{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:3px;align-self:flex-start;transition:color .2s,border-color .2s}
+.dest a:hover{color:var(--accent);border-color:var(--accent)}
+.prods{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:30px;text-align:center}
+.prod{padding:34px 22px;border:1px solid var(--line);border-radius:3px;background:#fff}
+.prod .ico{font-size:27px;margin-bottom:14px}
+.prod h3{font-size:21px;margin-bottom:9px}
+.prod p{font-size:14px;color:var(--sub)}
+.samples{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px}
+.sample{background:#fff;border:1px solid var(--line);padding:14px;border-radius:3px}
+.sample img{width:100%;display:block;border-radius:2px}
+.sample .cap{font-size:12.5px;color:var(--sub);padding:13px 6px 5px;letter-spacing:.05em}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:34px;counter-reset:s}
+.step{position:relative;padding-top:42px}
+.step::before{counter-increment:s;content:counter(s);position:absolute;top:0;left:0;font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--accent);line-height:1}
+.step h3{font-size:21px;margin-bottom:9px}
+.step p{font-size:14.5px;color:var(--sub)}
+.cta{background:var(--ink);color:var(--bg);text-align:center}
+.cta h2{font-size:clamp(31px,4.6vw,48px);margin-bottom:16px}
+.cta p{font-size:17px;opacity:.76;max-width:540px;margin:0 auto 30px}
+.cta .btn{background:var(--bg);color:var(--ink)}
+.cta .btn:hover{background:var(--accent);color:#fff}
+footer{border-top:1px solid var(--line);padding:38px 0;font-size:13.5px;color:var(--sub)}
+footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+@media(max-width:640px){
+  .hero{padding:58px 0 46px}
+  section{padding:50px 0}
+  header .wrap{flex-direction:column;align-items:flex-start;gap:12px}
+  nav{gap:18px;font-size:12px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>GeoInfo</div>
+    <nav>
+      <a href="#places">Places</a>
+      <a href="#maps">Map types</a>
+      <a href="#samples">Route samples</a>
+      <a href="#how">How it works</a>
+      <a href="#partner">Partner with us</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Geography · Places · Memory</div>
+    <h1>Maps of the places that actually mattered</h1>
+    <div class="rule"></div>
+    <p>Custom street maps, star maps, and route posters — made for the places you went, the roads you ran, and the nights you don't want to forget.</p>
+    <a class="btn" href="#places">Explore the map types</a>
+  </section>
+</div>
+
+<section class="alt" id="places">
+  <div class="wrap">
+    <div class="eyebrow">Featured destinations</div>
+    <h2 style="font-size:clamp(30px,4.6vw,46px);margin-bottom:14px">Places we're mapping</h2>
+    <p style="color:var(--sub);max-width:560px;margin-bottom:44px">We work with tourism boards and travel creators to put their places on the wall — and we split the commission with them.</p>
+    <div class="dests">
+
+      <div class="dest">
+        <div class="img">Azores</div>
+        <div class="body">
+          <div class="meta">Portugal · 9 islands</div>
+          <h3>The Azores</h3>
+          <p>Volcanic lakes, hydrangea roads, the Atlantic on every side. A star map over Pico, or the street map of the town you stayed in.</p>
+          <a href="#partner">View the map options →</a>
+        </div>
+      </div>
+
+      <div class="dest">
+        <div class="img">Faroe Islands</div>
+        <div class="body">
+          <div class="meta">Denmark · North Atlantic</div>
+          <h3>Faroe Islands</h3>
+          <p>Grass roofs into the sea, cliffs at Múlafossur, and the village that feels like it's hanging on. Map the exact street where you stood.</p>
+          <a href="#partner">View the map options →</a>
+        </div>
+      </div>
+
+      <div class="dest">
+        <div class="img">Tristan da Cunha</div>
+        <div class="body">
+          <div class="meta">South Atlantic · UK territory</div>
+          <h3>Tristan da Cunha</h3>
+          <p>The most remote inhabited island on earth. Edinburgh of the Seven Seas. If you've been there, you already know nobody else has a map like it.</p>
+          <a href="#partner">View the map options →</a>
+        </div>
+      </div>
+
+      <div class="dest">
+        <div class="img">Anywhere</div>
+        <div class="body">
+          <div class="meta">Your place</div>
+          <h3>Your hometown</h3>
+          <p>The street you grew up on. The cafe where you met your person. The exact coordinates of the moment. We print it and ship it framed.</p>
+          <a href="#partner">View the map options →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="maps">
+  <div class="wrap">
+    <div class="eyebrow">What we make</div>
+    <h2 style="font-size:clamp(30px,4.6vw,46px);margin-bottom:14px">Three ways to keep a place</h2>
+    <p style="color:var(--sub);max-width:580px;margin-bottom:44px">Clean Scandinavian minimalism. No clutter, no pinching — just the shape of where you were, in a frame that goes on the wall.</p>
+    <div class="prods">
+      <div class="prod">
+        <div class="ico">🗺️</div>
+        <h3>Street Map</h3>
+        <p>Any address, any city, any coordinates. Pick the place, add your text, we print it framed.</p>
+      </div>
+      <div class="prod">
+        <div class="ico">✨</div>
+        <h3>Star Map</h3>
+        <p>The night sky over one place on one date. Birthdays, anniversaries, the night everything changed.</p>
+      </div>
+      <div class="prod">
+        <div class="ico">🏃</div>
+        <h3>Route Poster</h3>
+        <p>Your Strava or GPX track drawn to scale, with the elevation profile. The marathon, the long run, the road trip.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="samples">
+  <div class="wrap">
+    <div class="eyebrow">Route samples</div>
+    <h2 style="font-size:clamp(30px,4.6vw,46px);margin-bottom:14px">Real routes, real GPX</h2>
+    <p style="color:var(--sub);max-width:600px;margin-bottom:44px">These aren't mockups. They're actual marathon courses plotted from GPX files — distance, elevation gain, and the route line exactly as it was run.</p>
+    <div class="samples">
+      <div class="sample">
+        <img src="assets/2020-Nanjing-marathon-sample.png" alt="Nanjing city marathon route poster sample">
+        <div class="cap">NANJING CITY MARATHON · 43.3 KM · +429 M</div>
+      </div>
+      <div class="sample">
+        <img src="assets/2020-Wuxi-marathon-sample.png" alt="Wuxi lake marathon route poster sample">
+        <div class="cap">WUXI LAKE MARATHON · 42.9 KM · +437 M</div>
+      </div>
+      <div class="sample">
+        <img src="assets/2019-Nanjing-Gaochun-marathon-sample.png" alt="Nanjing Gaochun marathon route poster sample">
+        <div class="cap">NANJING GAOCHUN · 42.5 KM · +282 M</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2 style="font-size:clamp(30px,4.6vw,46px);margin-bottom:44px">Four steps, no back and forth</h2>
+    <div class="how">
+      <div class="step">
+        <h3>Pick the place</h3>
+        <p>Search any address or drop in coordinates. For route posters, connect Strava or upload a GPX file.</p>
+      </div>
+      <div class="step">
+        <h3>Make it yours</h3>
+        <p>Choose the style, colors, text, and size. Live preview until it looks exactly right.</p>
+      </div>
+      <div class="step">
+        <h3>We print it</h3>
+        <p>Printed to order on museum-grade matte paper or canvas, then framed and shipped to your door.</p>
+      </div>
+      <div class="step">
+        <h3>It arrives ready</h3>
+        <p>No framing, no assembly, no hanging hardware hunt. It shows up ready to go on the wall.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="partner">
+  <div class="wrap">
+    <h2>Want your place on this page?</h2>
+    <p>We partner with tourism boards, travel creators, and running clubs. We bring the audience and the distribution — you bring the place. We split the commission.</p>
+    <a class="btn" href="mailto:markrwilkinsjr@gmail.com?subject=GeoInfo%20partnership">Start a conversation</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 GeoInfo — partnership programme by Mark Wilkins</span>
+    <span>Map production by Mapiful · Route posters by our production partners</span>
+  </div>
+</footer>
+</body>
+</html>
